@@ -1,0 +1,3 @@
+[submodule "aurman"]
+	path = aurman
+	url = https://github.com/polygamma/aurman
