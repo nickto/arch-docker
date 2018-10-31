@@ -1,4 +1,4 @@
-FROM nickto/python-arch
+FROM nickto/python:3.6-arch
 
 USER root
 

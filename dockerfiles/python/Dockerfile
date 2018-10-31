@@ -1,4 +1,4 @@
-FROM nickto/arch
+FROM nickto/arch:pacman-mirrors-sorted
 
 USER root
 
