@@ -1,4 +1,4 @@
 FROM archlinux/base
 USER root
-RUN pacman --noconfirm -S base-devel
+RUN pacman --noconfirm -Sy base-devel
 
