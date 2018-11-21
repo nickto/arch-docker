@@ -1,2 +1,1 @@
-# Jupyter on Arch docker
-And just Arch with Aurman.
+# Dockerfiles for Arch Linux 
