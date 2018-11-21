@@ -1,0 +1,3 @@
+[submodule "dockerfiles/aurman"]
+	path = dockerfiles/aurman
+	url = https://github.com/polygamma/aurman
