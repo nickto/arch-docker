@@ -1,11 +1,11 @@
 DOCKER_USER:=nickto
 DOCKER_ORGANIZATION=nickto
 DOCKER_IMAGE:=arch
-DOCKER_TAG:=$(git branch | grep \* | cut -d ' ' -f2)
+BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+DOCKER_TAG:=$(BRANCH)
 
 docker-image:
-	docker build -t $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE) .
-	docker tag $(DOCKER_IMAGE) $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE):$(DOCKER_TAG)	
+	docker build -t $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE):$(DOCKER_TAG) .
 
 docker-image-test: docker-image
 	$(error Not implemented yet)
