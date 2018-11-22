@@ -1,15 +1,19 @@
-USER="nickto"
+DOCKER_USER:=nickto
+DOCKER_ORGANIZATION=nickto
+DOCKER_IMAGE:=arch
+DOCKER_TAG:=$(git branch | grep \* | cut -d ' ' -f2)
 
-build: 
-	set -e
-	docker build -f aurman/Dockerfile -t ${USER}/arch:aurman ./aurman
-	docker build -f dockerfiles/arch/Dockerfile -t ${USER}/arch:pacman-mirrors-sorted .
-	docker build -f dockerfiles/python/Dockerfile -t ${USER}/python-arch . 
-	docker build -f dockerfiles/python36/Dockerfile -t ${USER}/python:3.6-arch .
-	docker build -f dockerfiles/jupyter/Dockerfile -t ${USER}/jupyter . 
-	docker build -f dockerfiles/jupyter-python36/Dockerfile -t ${USER}/jupyter:python3.6 . 
-run:
-	docker run -p 8888:8888 --name jupyter ${USER}/jupyter 
-get-notebook-url:
-	docker exec ${USER}/jupyter jupyter notebook list
+docker-image:
+	docker build -t $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE) .
+
+docker-image-test: docker-image
+	$(error Not implemented yet)
+
+ci-test: 
+	$(error Not implemented yet)
+
+docker-push:
+	docker login -u $(DOCKER_USER)
+	docker tag $(DOCKER_IMAGE) $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE)
+	docker push $(DOCKER_ORGANIZATION)/$(DOCKER_IMAGE)
 
